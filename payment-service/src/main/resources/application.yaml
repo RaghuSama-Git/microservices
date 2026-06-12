@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: payment-service
+  mongodb:
+    uri: mongodb://localhost:27017
+    database: product_db
+
+server:
+  port: 9191
