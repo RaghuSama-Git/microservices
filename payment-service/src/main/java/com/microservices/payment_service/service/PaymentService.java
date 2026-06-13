@@ -16,14 +16,16 @@ public class PaymentService {
         this.paymentRepo = paymentRepo;
     }
 
-    public Payment makePayment(Payment payment){
+    public Payment makePayment(Payment payment) {
         payment.setPaymentStatus(paymentProcessing());
         payment.setTransactionId(UUID.randomUUID().toString());
         payment.setPaymentId(UUID.randomUUID().hashCode());
-        return paymentRepo.save(payment);
+        Payment savedPayment = paymentRepo.save(payment);
+        System.out.println("Saved Payment : " + savedPayment);
+        return savedPayment;
     }
 
-    public String paymentProcessing(){
-        return new Random().nextBoolean() ? "SUCCESS" :"FAILED";
+    public String paymentProcessing() {
+        return new Random().nextBoolean() ? "SUCCESS" : "FAILED";
     }
 }
