@@ -32,17 +32,10 @@ public class OrderServiceImpl implements OrderService {
 
         payment.setOrderId(transactionRequest.getOrder().getId());
         payment.setAmount(transactionRequest.getOrder().getPrice());
-//        payment.setPaymentId(UUID.randomUUID().hashCode());
-
-        System.out.println("Id : " + transactionRequest.getOrder().getId());
-        System.out.println("Price : " + transactionRequest.getOrder().getPrice());
-        System.out.println("Order Object : " + order.toString());
-
-        System.out.println("Payment Object : " + payment);
 
         //Rest Call
         Payment paymentResponse = restTemplate.
-                postForObject("http://localhost:9191/payment/make-payment", payment, Payment.class);
+                postForObject("http://PAYMENT-SERVICE/payment/make-payment", payment, Payment.class);
 
         if (paymentResponse != null &&
                 paymentResponse.getPaymentStatus().equalsIgnoreCase("Success")) {
@@ -51,8 +44,8 @@ public class OrderServiceImpl implements OrderService {
             paymentMessage = "Payment has been failed";
         }
 
-        System.out.println("paymentResponse : " + paymentResponse.toString());
-        orderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
+        System.out.println("Saved Order : " + savedOrder);
         if(paymentResponse != null){
             return new TransactionResponse(paymentResponse.getAmount(), paymentMessage, order, paymentResponse.getTransactionId());
         }

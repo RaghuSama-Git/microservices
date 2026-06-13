@@ -71,6 +71,9 @@ public class Payment {
         this.transactionId = transactionId;
     }
 
+    public Payment() {
+    }
+
     @Override
     public String toString() {
         return "Payment{" +
