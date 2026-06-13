@@ -5,16 +5,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "OrderDetails")
 public class Order {
 
-   private int id;
+   private Integer id;
    private String name;
    private String quantity;
-   private double price;
+   private Double price;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -26,11 +26,11 @@ public class Order {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -42,7 +42,7 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public Order(int id, String name, double price, String quantity) {
+    public Order(Integer id, String name, Double price, String quantity) {
         this.id = id;
         this.name = name;
         this.price = price;

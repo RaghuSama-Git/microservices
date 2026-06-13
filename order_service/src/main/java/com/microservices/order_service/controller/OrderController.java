@@ -1,5 +1,7 @@
 package com.microservices.order_service.controller;
 
+import com.microservices.order_service.dto.TransactionRequest;
+import com.microservices.order_service.dto.TransactionResponse;
 import com.microservices.order_service.model.Order;
 import com.microservices.order_service.service.interfaces.OrderService;
 import com.microservices.order_service.util.ResponseDTO;
@@ -15,18 +17,13 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/Order")
-    public String getProduct() {
-        return "Order details";
-    }
-
     @PostMapping("/place-order")
-    public ResponseDTO<Order> placeOrder(@RequestBody Order orderRequest) {
+    public ResponseDTO<TransactionResponse> placeOrder(@RequestBody TransactionRequest transactionRequest) {
 
-        if (orderRequest == null) {
+        if (transactionRequest == null) {
             return new ResponseDTO<>("FAIL", null, "please fill the order details");
         }
-        Order orderRequestStatus = orderService.placeNewOrder(orderRequest);
+        TransactionResponse orderRequestStatus = orderService.placeNewOrder(transactionRequest);
         return new ResponseDTO<>("SUCCESS", orderRequestStatus, "Data inserted successfully");
     }
 }

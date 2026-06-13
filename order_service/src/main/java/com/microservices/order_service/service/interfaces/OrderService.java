@@ -1,9 +1,11 @@
 package com.microservices.order_service.service.interfaces;
 
+import com.microservices.order_service.dto.TransactionRequest;
+import com.microservices.order_service.dto.TransactionResponse;
 import com.microservices.order_service.model.Order;
 
 public interface OrderService {
 
-    Order placeNewOrder(Order orderRequest);
+    TransactionResponse placeNewOrder(TransactionRequest transactionRequest);
 
 }
