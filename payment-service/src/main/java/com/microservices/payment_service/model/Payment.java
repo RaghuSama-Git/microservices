@@ -1,12 +1,14 @@
 package com.microservices.payment_service.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+@Document
 public class Payment {
 
     @MongoId
     private String id;
-    private int paymentId;
+    private Integer paymentId;
     private String paymentStatus;
     private String transactionId;
     private int orderId;
@@ -36,11 +38,11 @@ public class Payment {
         this.orderId = orderId;
     }
 
-    public int getPaymentId() {
+    public Integer getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(int paymentId) {
+    public void setPaymentId(Integer paymentId) {
         this.paymentId = paymentId;
     }
 
@@ -60,7 +62,7 @@ public class Payment {
         this.transactionId = transactionId;
     }
 
-    public Payment(double amount, String id, int orderId, int paymentId, String paymentStatus, String transactionId) {
+    public Payment(double amount, String id, int orderId, Integer paymentId, String paymentStatus, String transactionId) {
         this.amount = amount;
         this.id = id;
         this.orderId = orderId;
