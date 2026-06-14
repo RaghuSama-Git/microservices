@@ -25,6 +25,10 @@ public class PaymentService {
         return savedPayment;
     }
 
+    public Payment fetchDetailsByOrderId(Integer orderId){
+        return paymentRepo.findPaymentByOrderId(orderId);
+    }
+
     public String paymentProcessing() {
         return new Random().nextBoolean() ? "SUCCESS" : "FAILED";
     }
